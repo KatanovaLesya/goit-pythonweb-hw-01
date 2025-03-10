@@ -58,3 +58,20 @@ class Library(LibraryInterface):
         else:
             for book in self.books:
                 logging.info(book)
+
+
+class LibraryManager:
+    """Керівник бібліотеки, який працює через LibraryInterface"""
+
+    def __init__(self, library: LibraryInterface):
+        self.library = library
+
+    def add_book(self, title: str, author: str, year: int) -> None:
+        book = Book(title, author, year)
+        self.library.add_book(book)
+
+    def remove_book(self, title: str) -> None:
+        self.library.remove_book(title)
+
+    def show_books(self) -> None:
+        self.library.show_books()
