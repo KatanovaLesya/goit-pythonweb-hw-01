@@ -1,5 +1,5 @@
 from vehicles import USVehicleFactory, EUVehicleFactory
-from library import Library, Book
+from library import Library, LibraryManager
 
 def run_vehicles():
     """Запускає тестування Завдання 1: Фабрика транспортних засобів"""
@@ -21,21 +21,18 @@ def run_vehicles():
 def run_library():
     """Запускає тестування Завдання 2: Бібліотека книг"""
     library = Library()
+    manager = LibraryManager(library)
 
-    book1 = Book("1984", "George Orwell", 1949)
-    book2 = Book("To Kill a Mockingbird", "Harper Lee", 1960)
-    book3 = Book("The Great Gatsby", "F. Scott Fitzgerald", 1925)
+    manager.add_book("1984", "George Orwell", 1949)
+    manager.add_book("To Kill a Mockingbird", "Harper Lee", 1960)
+    manager.add_book("The Great Gatsby", "F. Scott Fitzgerald", 1925)
 
-    library.add_book(book1)
-    library.add_book(book2)
-    library.add_book(book3)
+    manager.show_books()
 
-    library.show_books()
+    manager.remove_book("1984")
+    manager.show_books()
 
-    library.remove_book("1984")
-    library.show_books()
-
-    library.remove_book("Невідома книга")
+    manager.remove_book("Невідома книга")
 
 def main():
     """Головне меню: вибір між двома завданнями"""
